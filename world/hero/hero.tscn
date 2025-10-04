@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw4l34od5ruxt"]
+
+[ext_resource type="Script" uid="uid://caui3sd43acon" path="res://world/hero/PlayerController.gd" id="1_1vyrb"]
+[ext_resource type="Texture2D" uid="uid://hibig4sxqm61" path="res://icon.svg" id="2_u1ipw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xpv8o"]
+radius = 20.0
+height = 52.0
+
+[node name="Hero" type="CharacterBody2D"]
+script = ExtResource("1_1vyrb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 4.9999995)
+scale = Vector2(0.30468747, 0.30468747)
+texture = ExtResource("2_u1ipw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_xpv8o")

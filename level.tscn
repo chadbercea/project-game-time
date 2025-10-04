@@ -1,3 +1,71 @@
-[gd_scene format=3 uid="uid://mdsv5gou0awb"]
+[gd_scene load_steps=6 format=3 uid="uid://mdsv5gou0awb"]
+
+[ext_resource type="PackedScene" uid="uid://dw4l34od5ruxt" path="res://world/hero/hero.tscn" id="1_vonw3"]
+[ext_resource type="Texture2D" uid="uid://hibig4sxqm61" path="res://icon.svg" id="2_vonw3"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u52ul"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vonw3"]
+size = Vector2(274, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oi3di"]
+size = Vector2(330, 221)
 
 [node name="Level" type="Node2D"]
+
+[node name="Hero" parent="." instance=ExtResource("1_vonw3")]
+position = Vector2(542, 470)
+jump_force = -450.0
+
+[node name="Floor" type="StaticBody2D" parent="."]
+collision_layer = 9
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(547, 592)
+shape = SubResource("WorldBoundaryShape2D_u52ul")
+
+[node name="Platform" type="StaticBody2D" parent="."]
+position = Vector2(215, 521)
+collision_layer = 9
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(-29, -11)
+shape = SubResource("RectangleShape2D_vonw3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform"]
+modulate = Color(0.17925704, 0.20611131, 0.070752956, 1)
+position = Vector2(-29.999994, -10.000007)
+scale = Vector2(2.140625, 0.109375104)
+texture = ExtResource("2_vonw3")
+
+[node name="Platform3" type="StaticBody2D" parent="."]
+position = Vector2(553, 431)
+collision_layer = 9
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3"]
+position = Vector2(-29, -11)
+shape = SubResource("RectangleShape2D_vonw3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform3"]
+modulate = Color(0.17925704, 0.20611131, 0.070752956, 1)
+position = Vector2(-29.999994, -10.000007)
+scale = Vector2(2.140625, 0.109375104)
+texture = ExtResource("2_vonw3")
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2(908, 376)
+collision_layer = 9
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+position = Vector2(2, 96.5)
+shape = SubResource("RectangleShape2D_oi3di")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform2"]
+modulate = Color(0.17925704, 0.20611131, 0.070752956, 1)
+position = Vector2(0, 95.499985)
+scale = Vector2(2.578125, 1.7578123)
+texture = ExtResource("2_vonw3")
