@@ -1,9 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://mdsv5gou0awb"]
+[gd_scene load_steps=13 format=3 uid="uid://mdsv5gou0awb"]
 
+[ext_resource type="PackedScene" uid="uid://jx4pbasc2l6r" path="res://world/spawner/spawner.tscn" id="1_i2t4f"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_oi3di"]
 [ext_resource type="PackedScene" uid="uid://dw4l34od5ruxt" path="res://world/hero/hero.tscn" id="1_vonw3"]
 [ext_resource type="Texture2D" uid="uid://hibig4sxqm61" path="res://icon.svg" id="2_vonw3"]
+[ext_resource type="Texture2D" uid="uid://8dwb8olpdlsk" path="res://world/hero/32x32.png" id="3_km5ld"]
 [ext_resource type="PackedScene" uid="uid://cc722g8t412v4" path="res://world/collectable/Collectable.tscn" id="4_0b4ue"]
+[ext_resource type="Texture2D" uid="uid://bvqgupbxmer32" path="res://world/hero/64x64.png" id="4_i2t4f"]
+[ext_resource type="Texture2D" uid="uid://d1dy7102t1t2r" path="res://world/hero/128x128.png" id="5_8cye3"]
+[ext_resource type="Texture2D" uid="uid://bl8j8pcucmrkm" path="res://world/hero/256x256.png" id="6_2orkt"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u52ul"]
 
@@ -14,6 +19,9 @@ size = Vector2(274, 12)
 size = Vector2(330, 221)
 
 [node name="Level" type="Node2D"]
+
+[node name="Spawner" parent="." instance=ExtResource("1_i2t4f")]
+position = Vector2(611, 558)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
@@ -28,57 +36,57 @@ metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="Hero" parent="." instance=ExtResource("1_vonw3")]
 position = Vector2(542, 470)
+texture1 = ExtResource("3_km5ld")
+texture2 = ExtResource("4_i2t4f")
+texture3 = ExtResource("5_8cye3")
+texture4 = ExtResource("6_2orkt")
 run_speed = 300.0
 jump_force = -450.0
 
 [node name="Floor" type="StaticBody2D" parent="."]
-collision_layer = 9
-collision_mask = 4
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 position = Vector2(547, 592)
 shape = SubResource("WorldBoundaryShape2D_u52ul")
 
-[node name="Platform" type="StaticBody2D" parent="."]
+[node name="Car" type="StaticBody2D" parent="."]
 position = Vector2(215, 521)
-collision_layer = 9
-collision_mask = 2
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Car"]
 position = Vector2(-29, -11)
 shape = SubResource("RectangleShape2D_vonw3")
 
-[node name="Sprite2D" type="Sprite2D" parent="Platform"]
+[node name="Sprite2D" type="Sprite2D" parent="Car"]
 modulate = Color(0.17925704, 0.20611131, 0.070752956, 1)
 position = Vector2(-29.999994, -10.000007)
 scale = Vector2(2.140625, 0.109375104)
 texture = ExtResource("2_vonw3")
 
-[node name="Platform3" type="StaticBody2D" parent="."]
+[node name="Car2" type="StaticBody2D" parent="."]
 position = Vector2(553, 431)
-collision_layer = 9
-collision_mask = 2
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Car2"]
 position = Vector2(-29, -11)
 shape = SubResource("RectangleShape2D_vonw3")
 
-[node name="Sprite2D" type="Sprite2D" parent="Platform3"]
+[node name="Sprite2D" type="Sprite2D" parent="Car2"]
 modulate = Color(0.17925704, 0.20611131, 0.070752956, 1)
 position = Vector2(-29.999994, -10.000007)
 scale = Vector2(2.140625, 0.109375104)
 texture = ExtResource("2_vonw3")
 
-[node name="Platform2" type="StaticBody2D" parent="."]
+[node name="Building" type="StaticBody2D" parent="."]
 position = Vector2(908, 376)
-collision_layer = 9
-collision_mask = 2
+collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Building"]
 position = Vector2(2, 96.5)
 shape = SubResource("RectangleShape2D_oi3di")
 
-[node name="Sprite2D" type="Sprite2D" parent="Platform2"]
+[node name="Sprite2D" type="Sprite2D" parent="Building"]
 modulate = Color(0.17925704, 0.20611131, 0.070752956, 1)
 position = Vector2(0, 95.499985)
 scale = Vector2(2.578125, 1.7578123)

@@ -69,9 +69,11 @@ run={
 2d_render/layer_2="background"
 2d_render/layer_3="foreground"
 2d_physics/layer_1="hero"
-2d_physics/layer_2="objects"
-2d_physics/layer_3="world"
-2d_physics/layer_4="enemy"
+2d_physics/layer_2="small"
+2d_physics/layer_3="medium"
+2d_physics/layer_4="large"
+2d_physics/layer_5="meta"
+2d_physics/layer_6="world"
 
 [rendering]
 
