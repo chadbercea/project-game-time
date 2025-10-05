@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dw4l34od5ruxt"]
+[gd_scene load_steps=8 format=3 uid="uid://dw4l34od5ruxt"]
 
 [ext_resource type="Script" uid="uid://caui3sd43acon" path="res://world/hero/PlayerController.gd" id="1_1vyrb"]
 [ext_resource type="Texture2D" uid="uid://8dwb8olpdlsk" path="res://world/hero/32x32.png" id="2_v7k11"]
@@ -11,7 +11,11 @@ radius = 7.0
 [sub_resource type="Resource" id="Resource_7icm6"]
 script = ExtResource("4_nwvwd")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_nwvwd"]
+radius = 7.615773
+
 [node name="Hero" type="CharacterBody2D"]
+collision_mask = 44
 script = ExtResource("1_1vyrb")
 
 [node name="BlobSprite" type="Sprite2D" parent="."]
@@ -30,3 +34,14 @@ script = ExtResource("3_v7k11")
 tween_resource = SubResource("Resource_7icm6")
 draw_limits = true
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="Hitbox" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(3, -1)
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_nwvwd")
+debug_color = Color(0.6166616, 0.5364249, 0, 0.41960785)

@@ -1,15 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://cc722g8t412v4"]
 
-[ext_resource type="Script" uid="uid://ba1flim3gap5m" path="res://world/collectable/collectable.gd" id="1_1yujf"]
-[ext_resource type="Texture2D" uid="uid://hibig4sxqm61" path="res://icon.svg" id="2_38ki7"]
+[ext_resource type="Script" uid="uid://ba1flim3gap5m" path="res://world/person/collectable.gd" id="1_7aiq7"]
+[ext_resource type="Texture2D" uid="uid://hibig4sxqm61" path="res://icon.svg" id="2_qmv3g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_udkww"]
 size = Vector2(15, 34)
 
 [node name="Collectable" type="Area2D"]
 collision_layer = 2
-monitorable = false
-script = ExtResource("1_1yujf")
+collision_mask = 2
+script = ExtResource("1_7aiq7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_udkww")
@@ -17,6 +17,6 @@ shape = SubResource("RectangleShape2D_udkww")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 0, 1)
 scale = Vector2(0.12109375, 0.2734375)
-texture = ExtResource("2_38ki7")
+texture = ExtResource("2_qmv3g")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

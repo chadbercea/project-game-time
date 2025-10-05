@@ -8,7 +8,7 @@ extends CharacterBody2D
 @export var stage2: int = 5
 @export var stage3: int = 10
 @export var stage4: int = 15
-@export_range(0, 1) var growth_scale_rate = 0.3
+@export_range(0, 1) var growth_scale_rate = 0.1
 
 @export_group("Movement")
 @export var walk_speed = 150.0
@@ -53,12 +53,25 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func on_collect(_who) -> void:
-	%BlobSprite.scale = Vector2(Globals.collectables + growth_scale_rate, Globals.collectables + growth_scale_rate)
-	%BlobCollisionShape.scale = Vector2(Globals.collectables + growth_scale_rate, Globals.collectables + growth_scale_rate)
+	%BlobSprite.scale = scale_blob()
+	%BlobCollisionShape.scale = scale_blob()
+	%Hitbox.scale = scale_blob()
 	
-	if Globals.collectables > stage2:
+	if Globals.collectables == stage2: # Cars
+		print("stage 2")
 		%BlobSprite.texture = texture2
-	elif Globals.collectables > stage3:
+		jump_force -= 25
+		%Hitbox.set_collision_layer_value(3, true) # Enable collision layer for medium
+	elif Globals.collectables == stage3: # Buildings
+		print("stage 3")
 		%BlobSprite.texture = texture3
-	elif Globals.collectables > stage4:
+		jump_force -= 25
+		%Hitbox.set_collision_layer_value(4, true) # Enable collision layer for large
+	elif Globals.collectables == stage4: # Meta (waiting on ui)
+		print("stage 4")
 		%BlobSprite.texture = texture4
+		jump_force -= 25
+		%Hitbox.set_collision_layer_value(5, true) # Enable collision layer for meta
+
+func scale_blob() -> Vector2:
+	return Vector2(Globals.collectables + growth_scale_rate, Globals.collectables + growth_scale_rate)

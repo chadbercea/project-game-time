@@ -1,22 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://mdsv5gou0awb"]
+[gd_scene load_steps=12 format=3 uid="uid://mdsv5gou0awb"]
 
 [ext_resource type="PackedScene" uid="uid://jx4pbasc2l6r" path="res://world/spawner/spawner.tscn" id="1_i2t4f"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_oi3di"]
 [ext_resource type="PackedScene" uid="uid://dw4l34od5ruxt" path="res://world/hero/hero.tscn" id="1_vonw3"]
-[ext_resource type="Texture2D" uid="uid://hibig4sxqm61" path="res://icon.svg" id="2_vonw3"]
 [ext_resource type="Texture2D" uid="uid://8dwb8olpdlsk" path="res://world/hero/32x32.png" id="3_km5ld"]
-[ext_resource type="PackedScene" uid="uid://cc722g8t412v4" path="res://world/collectable/Collectable.tscn" id="4_0b4ue"]
+[ext_resource type="PackedScene" uid="uid://cc722g8t412v4" path="res://world/person/Person.tscn" id="4_0b4ue"]
 [ext_resource type="Texture2D" uid="uid://bvqgupbxmer32" path="res://world/hero/64x64.png" id="4_i2t4f"]
 [ext_resource type="Texture2D" uid="uid://d1dy7102t1t2r" path="res://world/hero/128x128.png" id="5_8cye3"]
 [ext_resource type="Texture2D" uid="uid://bl8j8pcucmrkm" path="res://world/hero/256x256.png" id="6_2orkt"]
+[ext_resource type="PackedScene" uid="uid://78x6c8dgn3ra" path="res://world/car/Car.tscn" id="9_8cye3"]
+[ext_resource type="PackedScene" uid="uid://duqlqo4twyvvu" path="res://world/building/Building.tscn" id="10_2orkt"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u52ul"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vonw3"]
-size = Vector2(274, 12)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oi3di"]
-size = Vector2(330, 221)
 
 [node name="Level" type="Node2D"]
 
@@ -44,59 +39,72 @@ run_speed = 300.0
 jump_force = -450.0
 
 [node name="Floor" type="StaticBody2D" parent="."]
-collision_mask = 32
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 position = Vector2(547, 592)
 shape = SubResource("WorldBoundaryShape2D_u52ul")
 
-[node name="Car" type="StaticBody2D" parent="."]
-position = Vector2(215, 521)
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Car"]
-position = Vector2(-29, -11)
-shape = SubResource("RectangleShape2D_vonw3")
-
-[node name="Sprite2D" type="Sprite2D" parent="Car"]
-modulate = Color(0.17925704, 0.20611131, 0.070752956, 1)
-position = Vector2(-29.999994, -10.000007)
-scale = Vector2(2.140625, 0.109375104)
-texture = ExtResource("2_vonw3")
-
-[node name="Car2" type="StaticBody2D" parent="."]
-position = Vector2(553, 431)
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Car2"]
-position = Vector2(-29, -11)
-shape = SubResource("RectangleShape2D_vonw3")
-
-[node name="Sprite2D" type="Sprite2D" parent="Car2"]
-modulate = Color(0.17925704, 0.20611131, 0.070752956, 1)
-position = Vector2(-29.999994, -10.000007)
-scale = Vector2(2.140625, 0.109375104)
-texture = ExtResource("2_vonw3")
-
-[node name="Building" type="StaticBody2D" parent="."]
-position = Vector2(908, 376)
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Building"]
-position = Vector2(2, 96.5)
-shape = SubResource("RectangleShape2D_oi3di")
-
-[node name="Sprite2D" type="Sprite2D" parent="Building"]
-modulate = Color(0.17925704, 0.20611131, 0.070752956, 1)
-position = Vector2(0, 95.499985)
-scale = Vector2(2.578125, 1.7578123)
-texture = ExtResource("2_vonw3")
+[node name="Collectable8" parent="." instance=ExtResource("9_8cye3")]
+position = Vector2(314, 574)
 
 [node name="Collectable" parent="." instance=ExtResource("4_0b4ue")]
-position = Vector2(633, 358)
+position = Vector2(494, 569)
 
 [node name="Collectable2" parent="." instance=ExtResource("4_0b4ue")]
-position = Vector2(913, 297)
+position = Vector2(651, 571)
 
 [node name="Collectable3" parent="." instance=ExtResource("4_0b4ue")]
-position = Vector2(490, 555)
+position = Vector2(414, 573)
+
+[node name="Collectable4" parent="." instance=ExtResource("4_0b4ue")]
+position = Vector2(692, 569)
+
+[node name="Collectable5" parent="." instance=ExtResource("10_2orkt")]
+position = Vector2(858, 526)
+
+[node name="Collectable6" parent="." instance=ExtResource("9_8cye3")]
+position = Vector2(776, 575)
+
+[node name="Collectable7" parent="." instance=ExtResource("9_8cye3")]
+position = Vector2(545, 579)
+
+[node name="Collectable9" parent="." instance=ExtResource("9_8cye3")]
+position = Vector2(194, 572)
+
+[node name="Collectable10" parent="." instance=ExtResource("10_2orkt")]
+position = Vector2(129, 529)
+
+[node name="Collectable11" parent="." instance=ExtResource("4_0b4ue")]
+position = Vector2(256, 570)
+
+[node name="Collectable12" parent="." instance=ExtResource("4_0b4ue")]
+position = Vector2(235, 570)
+
+[node name="Collectable13" parent="." instance=ExtResource("9_8cye3")]
+position = Vector2(964, 572)
+
+[node name="Collectable14" parent="." instance=ExtResource("9_8cye3")]
+position = Vector2(1065, 571)
+
+[node name="Collectable15" parent="." instance=ExtResource("4_0b4ue")]
+position = Vector2(1016, 571)
+
+[node name="Collectable16" parent="." instance=ExtResource("4_0b4ue")]
+position = Vector2(1131, 571)
+
+[node name="Collectable17" parent="." instance=ExtResource("4_0b4ue")]
+position = Vector2(1178, 572)
+
+[node name="Collectable18" parent="." instance=ExtResource("4_0b4ue")]
+position = Vector2(1226, 567)
+
+[node name="Collectable19" parent="." instance=ExtResource("9_8cye3")]
+position = Vector2(46, 576)
+
+[node name="Collectable20" parent="." instance=ExtResource("9_8cye3")]
+position = Vector2(-26, 572)
+
+[node name="Collectable21" parent="." instance=ExtResource("4_0b4ue")]
+position = Vector2(-79, 575)
