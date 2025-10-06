@@ -20,28 +20,46 @@ point_count = 2
 [node name="Level" type="Node2D"]
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-offset_left = -441.0
-offset_top = -451.99994
-offset_right = -401.0
-offset_bottom = -238.93304
-scale = Vector2(58.768433, 4.9633985)
+offset_left = -1837.0
+offset_top = -910.0
+offset_right = -1797.0
+offset_bottom = -696.9331
+scale = Vector2(135.56844, 8.2034)
 color = Color(2.117753e-06, 0.72432715, 0.8625671, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="."]
-offset_left = -429.0
-offset_top = 551.0
-offset_right = -389.0
-offset_bottom = 591.0
-scale = Vector2(58.768433, 4.9633985)
+offset_left = -472.0
+offset_top = 555.0
+offset_right = -432.0
+offset_bottom = 595.0
+scale = Vector2(59.061337, 4.84534)
 color = Color(0.3854925, 0.38549247, 0.38549247, 1)
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -430.0
-offset_top = 584.0
-offset_right = -390.0
-offset_bottom = 666.80615
-scale = Vector2(58.768433, 4.9633985)
+offset_left = -473.0
+offset_top = 582.0
+offset_right = -433.0
+offset_bottom = 664.80615
+scale = Vector2(59.11332, 13.267178)
 color = Color(0.11858138, 0.11858138, 0.11858138, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+offset_left = -469.00003
+offset_top = 555.00006
+offset_right = -429.00003
+offset_bottom = 595.00006
+rotation = -0.06387201
+scale = Vector2(-19.080555, 11.468521)
+color = Color(0.019607844, 0.12156863, 1, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+offset_left = 1885.0
+offset_top = 553.0
+offset_right = 1925.0
+offset_bottom = 593.0
+rotation = 0.048830584
+scale = Vector2(18.504808, 11.3330345)
+color = Color(0.019607844, 0.12156863, 1, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
@@ -70,6 +88,26 @@ collision_layer = 32
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(547, 592)
+shape = SubResource("WorldBoundaryShape2D_u52ul")
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(103, -61)
+rotation = 1.5707964
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(547, 592)
+shape = SubResource("WorldBoundaryShape2D_u52ul")
+
+[node name="Wall2" type="StaticBody2D" parent="."]
+position = Vector2(1297, 1033)
+rotation = -1.5707964
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
 position = Vector2(547, 592)
 shape = SubResource("WorldBoundaryShape2D_u52ul")
 
