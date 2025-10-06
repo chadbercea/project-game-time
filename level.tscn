@@ -4,19 +4,44 @@
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_oi3di"]
 [ext_resource type="PackedScene" uid="uid://dw4l34od5ruxt" path="res://world/hero/hero.tscn" id="1_vonw3"]
 [ext_resource type="Texture2D" uid="uid://8dwb8olpdlsk" path="res://world/hero/32x32.png" id="3_km5ld"]
-[ext_resource type="PackedScene" uid="uid://cc722g8t412v4" path="res://world/person/Person.tscn" id="4_0b4ue"]
 [ext_resource type="Texture2D" uid="uid://bvqgupbxmer32" path="res://world/hero/64x64.png" id="4_i2t4f"]
 [ext_resource type="Texture2D" uid="uid://d1dy7102t1t2r" path="res://world/hero/128x128.png" id="5_8cye3"]
 [ext_resource type="Texture2D" uid="uid://bl8j8pcucmrkm" path="res://world/hero/256x256.png" id="6_2orkt"]
 [ext_resource type="PackedScene" uid="uid://78x6c8dgn3ra" path="res://world/car/Car.tscn" id="9_8cye3"]
 [ext_resource type="PackedScene" uid="uid://duqlqo4twyvvu" path="res://world/building/Building.tscn" id="10_2orkt"]
 
+[sub_resource type="Curve" id="Curve_i2t4f"]
+_limits = [0.0, 10.0, 0.0, 50.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(50, 10), 0.28, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u52ul"]
 
 [node name="Level" type="Node2D"]
 
-[node name="Spawner" parent="." instance=ExtResource("1_i2t4f")]
-position = Vector2(611, 558)
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -441.0
+offset_top = -451.99994
+offset_right = -401.0
+offset_bottom = -238.93304
+scale = Vector2(58.768433, 4.9633985)
+color = Color(2.117753e-06, 0.72432715, 0.8625671, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = -429.0
+offset_top = 551.0
+offset_right = -389.0
+offset_bottom = 591.0
+scale = Vector2(58.768433, 4.9633985)
+color = Color(0.3854925, 0.38549247, 0.38549247, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -430.0
+offset_top = 584.0
+offset_right = -390.0
+offset_bottom = 666.80615
+scale = Vector2(58.768433, 4.9633985)
+color = Color(0.11858138, 0.11858138, 0.11858138, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
@@ -35,10 +60,12 @@ texture1 = ExtResource("3_km5ld")
 texture2 = ExtResource("4_i2t4f")
 texture3 = ExtResource("5_8cye3")
 texture4 = ExtResource("6_2orkt")
+growth_scale_rate = SubResource("Curve_i2t4f")
 run_speed = 300.0
 jump_force = -450.0
 
 [node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(0, -7)
 collision_layer = 32
 collision_mask = 0
 
@@ -46,65 +73,117 @@ collision_mask = 0
 position = Vector2(547, 592)
 shape = SubResource("WorldBoundaryShape2D_u52ul")
 
-[node name="Collectable8" parent="." instance=ExtResource("9_8cye3")]
-position = Vector2(314, 574)
+[node name="People Spawners" type="Node2D" parent="."]
 
-[node name="Collectable" parent="." instance=ExtResource("4_0b4ue")]
-position = Vector2(494, 569)
+[node name="Person Spawner" parent="People Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(1153, 563)
 
-[node name="Collectable2" parent="." instance=ExtResource("4_0b4ue")]
-position = Vector2(651, 571)
+[node name="Person Spawner2" parent="People Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(88, 570)
 
-[node name="Collectable3" parent="." instance=ExtResource("4_0b4ue")]
-position = Vector2(414, 573)
+[node name="Person Spawner3" parent="People Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(-152, 569)
 
-[node name="Collectable4" parent="." instance=ExtResource("4_0b4ue")]
-position = Vector2(692, 569)
+[node name="Person Spawner4" parent="People Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(1758, 555)
 
-[node name="Collectable5" parent="." instance=ExtResource("10_2orkt")]
-position = Vector2(858, 526)
+[node name="Person Spawner5" parent="People Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(693, 562)
 
-[node name="Collectable6" parent="." instance=ExtResource("9_8cye3")]
-position = Vector2(776, 575)
+[node name="Person Spawner7" parent="People Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(1429, 561)
 
-[node name="Collectable7" parent="." instance=ExtResource("9_8cye3")]
-position = Vector2(545, 579)
+[node name="Person Spawner8" parent="People Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(364, 568)
 
-[node name="Collectable9" parent="." instance=ExtResource("9_8cye3")]
-position = Vector2(194, 572)
+[node name="Person Spawner9" parent="People Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(124, 567)
 
-[node name="Collectable10" parent="." instance=ExtResource("10_2orkt")]
-position = Vector2(129, 529)
+[node name="Person Spawner10" parent="People Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(1029, 548)
 
-[node name="Collectable11" parent="." instance=ExtResource("4_0b4ue")]
-position = Vector2(256, 570)
+[node name="Person Spawner11" parent="People Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(-36, 555)
 
-[node name="Collectable12" parent="." instance=ExtResource("4_0b4ue")]
-position = Vector2(235, 570)
+[node name="Person Spawner12" parent="People Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(-276, 554)
 
-[node name="Collectable13" parent="." instance=ExtResource("9_8cye3")]
-position = Vector2(964, 572)
+[node name="Person Spawner13" parent="People Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(1698, 563)
 
-[node name="Collectable14" parent="." instance=ExtResource("9_8cye3")]
-position = Vector2(1065, 571)
+[node name="Person Spawner15" parent="People Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(393, 569)
 
-[node name="Collectable15" parent="." instance=ExtResource("4_0b4ue")]
-position = Vector2(1016, 571)
+[node name="Car Spawners" type="Node2D" parent="."]
 
-[node name="Collectable16" parent="." instance=ExtResource("4_0b4ue")]
-position = Vector2(1131, 571)
+[node name="CarSpawner" parent="Car Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(910, 577)
+unit = ExtResource("9_8cye3")
 
-[node name="Collectable17" parent="." instance=ExtResource("4_0b4ue")]
-position = Vector2(1178, 572)
+[node name="CarSpawner2" parent="Car Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(276, 578)
+unit = ExtResource("9_8cye3")
 
-[node name="Collectable18" parent="." instance=ExtResource("4_0b4ue")]
-position = Vector2(1226, 567)
+[node name="CarSpawner3" parent="Car Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(-62, 570)
+unit = ExtResource("9_8cye3")
 
-[node name="Collectable19" parent="." instance=ExtResource("9_8cye3")]
-position = Vector2(46, 576)
+[node name="CarSpawner4" parent="Car Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(1809, 557)
+unit = ExtResource("9_8cye3")
 
-[node name="Collectable20" parent="." instance=ExtResource("9_8cye3")]
-position = Vector2(-26, 572)
+[node name="CarSpawner5" parent="Car Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(1175, 558)
+unit = ExtResource("9_8cye3")
 
-[node name="Collectable21" parent="." instance=ExtResource("4_0b4ue")]
-position = Vector2(-79, 575)
+[node name="CarSpawner6" parent="Car Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(837, 550)
+unit = ExtResource("9_8cye3")
+
+[node name="CarSpawner7" parent="Car Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(1423, 576)
+unit = ExtResource("9_8cye3")
+
+[node name="CarSpawner8" parent="Car Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(789, 577)
+unit = ExtResource("9_8cye3")
+
+[node name="CarSpawner11" parent="Car Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(-24, 570)
+unit = ExtResource("9_8cye3")
+
+[node name="CarSpawner12" parent="Car Spawners" instance=ExtResource("1_i2t4f")]
+position = Vector2(-362, 562)
+unit = ExtResource("9_8cye3")
+
+[node name="Buildings" type="Node2D" parent="."]
+
+[node name="Building" parent="Buildings" instance=ExtResource("10_2orkt")]
+position = Vector2(45, 535)
+
+[node name="Building2" parent="Buildings" instance=ExtResource("10_2orkt")]
+position = Vector2(1078, 531)
+
+[node name="Building3" parent="Buildings" instance=ExtResource("10_2orkt")]
+position = Vector2(1147, 549)
+
+[node name="Building4" parent="Buildings" instance=ExtResource("10_2orkt")]
+position = Vector2(-95, 572)
+
+[node name="Building5" parent="Buildings" instance=ExtResource("10_2orkt")]
+position = Vector2(352, 552)
+
+[node name="Building6" parent="Buildings" instance=ExtResource("10_2orkt")]
+position = Vector2(906, 601)
+
+[node name="Building8" parent="Buildings" instance=ExtResource("10_2orkt")]
+position = Vector2(1348, 582)
+
+[node name="Building9" parent="Buildings" instance=ExtResource("10_2orkt")]
+position = Vector2(-283, 568)
+
+[node name="Building10" parent="Buildings" instance=ExtResource("10_2orkt")]
+position = Vector2(-394, 533)
+
+[node name="Building11" parent="Buildings" instance=ExtResource("10_2orkt")]
+position = Vector2(1588, 551)

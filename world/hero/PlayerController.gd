@@ -5,10 +5,10 @@ extends CharacterBody2D
 @export var texture2: Texture
 @export var texture3: Texture
 @export var texture4: Texture
-@export var stage2: int = 5
-@export var stage3: int = 10
-@export var stage4: int = 15
-@export_range(0, 1) var growth_scale_rate = 0.1
+@export var stage2: int = 15
+@export var stage3: int = 40
+@export var stage4: int = 80
+@export var growth_scale_rate: Curve
 
 @export_group("Movement")
 @export var walk_speed = 150.0
@@ -57,21 +57,23 @@ func on_collect(_who) -> void:
 	%BlobCollisionShape.scale = scale_blob()
 	%Hitbox.scale = scale_blob()
 	
+	## The collision gets out of whack because the blog textures are different sizes
+	
 	if Globals.collectables == stage2: # Cars
 		print("stage 2")
-		%BlobSprite.texture = texture2
+		#%BlobSprite.texture = texture2
 		jump_force -= 25
 		%Hitbox.set_collision_layer_value(3, true) # Enable collision layer for medium
 	elif Globals.collectables == stage3: # Buildings
 		print("stage 3")
-		%BlobSprite.texture = texture3
+		#%BlobSprite.texture = texture3
 		jump_force -= 25
 		%Hitbox.set_collision_layer_value(4, true) # Enable collision layer for large
 	elif Globals.collectables == stage4: # Meta (waiting on ui)
 		print("stage 4")
-		%BlobSprite.texture = texture4
+		#%BlobSprite.texture = texture4
 		jump_force -= 25
 		%Hitbox.set_collision_layer_value(5, true) # Enable collision layer for meta
 
 func scale_blob() -> Vector2:
-	return Vector2(Globals.collectables + growth_scale_rate, Globals.collectables + growth_scale_rate)
+	return Vector2(growth_scale_rate.sample(Globals.collectables) + 1,growth_scale_rate.sample(Globals.collectables) + 1)
