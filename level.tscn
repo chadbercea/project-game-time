@@ -11,8 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://duqlqo4twyvvu" path="res://world/building/Building.tscn" id="10_2orkt"]
 
 [sub_resource type="Curve" id="Curve_i2t4f"]
-_limits = [0.0, 10.0, 0.0, 50.0]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(50, 10), 0.28, 0.0, 0, 0]
+_limits = [0.0, 40.0, 0.0, 150.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(150, 40), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u52ul"]

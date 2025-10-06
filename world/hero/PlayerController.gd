@@ -49,6 +49,11 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, direction * speed, speed * acceleration)
 	else:
 		velocity.x = move_toward(velocity.x, 0, walk_speed * deceleration)
+	
+	if Input.is_action_just_pressed("left"):
+		%BlobSprite.flip_h = true
+	elif Input.is_action_just_pressed("right"):
+		%BlobSprite.flip_h = false
 
 	move_and_slide()
 
